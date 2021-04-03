@@ -1,0 +1,49 @@
+
+
+Version:	3.12
+CmdLine:	C:\Users\Almalis\eclipse-workspace\Almalis_Planning\Planning_Route.exe --l4j-debug
+WOW64:		yes
+Working dir:	C:\Users\Almalis\eclipse-workspace\Almalis_Planning\.
+Java min ver:	1.004.000
+Java max ver:	
+64-bit search:	SOFTWARE\JavaSoft\Java Runtime Environment...
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8
+Check launcher:	C:\Program Files\Java\jre1.8.0_221\bin\javaw.exe (OK)
+Match:		1.008.000
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8.0_221
+Check launcher:	C:\Program Files\Java\jre1.8.0_221\bin\javaw.exe (OK)
+Match:		1.008.000_221
+64-bit search:	SOFTWARE\JavaSoft\Java Development Kit...
+64-bit search:	SOFTWARE\JavaSoft\JRE...
+64-bit search:	SOFTWARE\JavaSoft\JDK...
+Check:		SOFTWARE\JavaSoft\JDK\12.0.1
+Check launcher:	C:\Program Files\Java\jdk-12.0.1\bin\javaw.exe (OK)
+Match:		1.012.000_001
+Runtime used:	1.012.000_001 (64-bit)
+Launcher:	C:\Program Files\Java\jdk-12.0.1\bin\javaw.exe
+Launcher args:	-jar "C:\Users\Almalis\eclipse-workspace\Almalis_Planning\Planning_Route.exe"
+Args length:	77/32768 chars
+Exit code:	0
+
+
+Version:	3.12
+CmdLine:	C:\Users\admin\Downloads\Almalis_Planning\Planning_Route.exe --l4j-debug
+WOW64:		no
+Working dir:	C:\Users\admin\Downloads\Almalis_Planning\.
+Java min ver:	1.004.000
+Java max ver:	
+32-bit search:	SOFTWARE\JavaSoft\Java Runtime Environment...
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8
+Check launcher:	C:\Program Files\Java\jre1.8.0_66\bin\javaw.exe (OK)
+Match:		1.008.000
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8.0_66
+Check launcher:	C:\Program Files\Java\jre1.8.0_66\bin\javaw.exe (OK)
+Match:		1.008.000_066
+32-bit search:	SOFTWARE\JavaSoft\Java Development Kit...
+32-bit search:	SOFTWARE\JavaSoft\JRE...
+32-bit search:	SOFTWARE\JavaSoft\JDK...
+Runtime used:	1.008.000_066 (32-bit)
+Launcher:	C:\Program Files\Java\jre1.8.0_66\bin\javaw.exe
+Launcher args:	-jar "C:\Users\admin\Downloads\Almalis_Planning\Planning_Route.exe"
+Args length:	67/32768 chars
+Exit code:	0
