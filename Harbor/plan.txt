@@ -1,0 +1,35 @@
+Cite our paper if this tool was useful for your work:
+
+@inproceedings{magnaguagno2017web,
+  title={WEB PLANNER: A Tool to Develop Classical Planning Domains and Visualize Heuristic State-Space Search},
+  author={Magnaguagno, Maur{\'i}cio C and Pereira, Ramon Fraga and M{\'o}re, Martin D and Meneguzzi, Felipe},
+  booktitle={Proceedings of the Workshop on User Interfaces and Scheduling and Planning, UISP},
+  pages={32--38},
+  year={2017}
+}
+
+Mon Mar 02 2020 10:22:28 GMT+0200 (Χειμερινή ώρα Ανατολικής Ευρώπης)
+Result: SUCCESS
+Domain: harbor
+Problem: harbor_problem
+Plan:
+  (pickcontainerfromdock crane1 truck1 con2 dock2)
+  (puttotruck crane1 con2 truck1)
+  (move truck1 dock2 dock1 crane1)
+  (move truck1 dock1 dock3 crane1)
+  (pickcontainerfromtruck crane1 con2 truck1)
+  (puttodock crane1 con2 truck1 dock3)
+  (move truck1 dock3 dock1 crane1)
+  (pickcontainer_from_on_another_container crane1 truck1 con3 dock1 con1)
+  (puttotruck crane1 con3 truck1)
+  (move truck1 dock1 dock3 crane1)
+  (pickcontainerfromtruck crane1 con3 truck1)
+  (puttodock crane1 con3 truck1 dock3)
+  (move truck1 dock3 dock1 crane1)
+  (pickcontainerfromdock crane1 truck1 con1 dock1)
+  (puttotruck crane1 con1 truck1)
+  (move truck1 dock1 dock3 crane1)
+  (pickcontainerfromtruck crane1 con1 truck1)
+  (puttodock_on_another_container crane1 con1 con2 truck1 dock3)
+  (move truck1 dock3 dock1 crane1)
+Execution time: 0.0256s
