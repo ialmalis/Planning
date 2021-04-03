@@ -1,0 +1,79 @@
+POSTMANS={Postman1};POBOX={poBox1};LETTERS={Let1,Let2};
+LOCATIONS={Loc1,Loc2,Loc3,Loc4,Loc5,Loc6,Loc7,Loc8,Loc9,Loc10,Loc11,Loc12,Loc13,Loc14}+{nil};
+LOCATIONS_SUB1=LOCATIONS - {Loc1,Loc4,Loc9,Loc10,Loc11,Loc12,Loc13,Loc14};
+LOCATIONS_SUB2=LOCATIONS_SUB1-{Loc2,Loc3};
+LOCATIONS_LET=LOCATIONS+POSTMANS+POBOX;
+
+
+road(Loc1,Loc2);road(Loc2,Loc1);road(Loc2,Loc3);road(Loc3,Loc2);road(Loc4,Loc3);road(Loc3,Loc4);
+road(Loc4,Loc5);road(Loc5,Loc4);road(Loc12,Loc5);road(Loc5,Loc12);road(Loc8,Loc13);road(Loc13,Loc8);
+road(Loc13,Loc14);road(Loc14,Loc13);road(Loc8,Loc10);road(Loc10,Loc8);road(Loc6,Loc10);road(Loc10,Loc6);
+road(Loc9,Loc10);road(Loc10,Loc9);road(Loc9,Loc11);road(Loc11,Loc9);road(Loc6,Loc11);road(Loc11,Loc6);
+road(Loc2,Loc11);road(Loc11,Loc2);
+
+road_s1(Loc1,Loc2);road_s1(Loc2,Loc3);road_s1(Loc3,Loc2);road_s1(Loc4,Loc3);road_s1(Loc13,Loc8);road_s1(Loc10,Loc8);
+road_s1(Loc10,Loc6);road_s1(Loc11,Loc6);road_s1(Loc11,Loc2);
+
+road_s2(Loc13,Loc8);road_s2(Loc10,Loc6);road_s2(Loc11,Loc6);
+
+sub1(Loc2,Loc3);sub1(Loc3,Loc5);sub1(Loc5,Loc7);sub1(Loc7,Loc8);sub1(Loc8,Loc6);sub1(Loc6,Loc2);
+sub2(Loc5,Loc7);sub2(Loc7,Loc8);sub2(Loc8,Loc6);sub2(Loc6,Loc5);
+
+commonsub(Loc8,Loc8);commonsub(Loc6,Loc6);commonsub(Loc7,Loc7);
+commonsub2(Loc8,Loc8);commonsub2(Loc6,Loc6);commonsub2(Loc7,Loc7);commonsub2(Loc3,Loc3);commonsub2(Loc2,Loc2);
+
+loc(Postman1):LOCATIONS;
+loc_s1(Postman1):LOCATIONS_SUB1;
+loc_s2(Postman1):LOCATIONS_SUB2;
+loc2(Let1):LOCATIONS_LET;
+loc2(Let2):LOCATIONS_LET;
+loc3(poBox1):LOCATIONS;
+
+MoveByFoot(P:POSTMANS,X:LOCATIONS,Y:LOCATIONS)
+pre: loc(P)=X & road(X,Y)
+eff: loc(P)<-Y;
+
+MoveBySub1(P:POSTMANS,X:LOCATIONS_SUB1,Y:LOCATIONS_SUB1)
+pre: loc_s1(P)=X & sub1(X,Y)
+eff: loc_s1(P)<-Y;
+
+MoveBySub2(P:POSTMANS,X:LOCATIONS_SUB2,Y:LOCATIONS_SUB2)
+pre: loc_s2(P)=X & sub2(X,Y)
+eff: loc_s2(P)<-Y;
+
+PickupLet(P:POSTMANS,X:LETTERS,Y:LOCATIONS)
+pre: loc(P)=Y & loc2(X)=Y
+eff: loc2(X)<-P;
+
+putLettoBox(P:POSTMANS,X:LETTERS,Y:LOCATIONS,K:POBOX)
+pre:loc2(X)=P & loc(P)=Y & loc3(K)=Y
+eff:loc2(X)<-K;
+
+enterS1fromRoad(P:POSTMANS,X:LOCATIONS_SUB1,Y:LOCATIONS)
+pre: loc(P)=Y & road_s1(Y,X)
+eff:loc_s1(P)<-X & loc(P)<-nil;
+
+enterS2fromRoad(P:POSTMANS,X:LOCATIONS_SUB2,Y:LOCATIONS)
+pre: loc(P)=Y & road_s2(Y,X)
+eff:loc_s2(P)<-X & loc(P)<-nil;
+
+enterS1fromS2(P:POSTMANS,X:LOCATIONS_SUB1,Y:LOCATIONS_SUB2)
+pre: loc_s2(P)=Y & commonsub(Y,X)
+eff:loc_s1(P)<-X & loc_s2(P)<-nil;
+
+enterS2fromS1(P:POSTMANS,X:LOCATIONS_SUB1,Y:LOCATIONS_SUB2)
+pre: loc_s1(P)=X & commonsub(X,Y)
+eff:loc_s2(P)<-Y & loc_s1(P)<-nil;
+
+enterRoadfromS2(P:POSTMANS,X:LOCATIONS_SUB2,Y:LOCATIONS)
+pre: loc_s2(P)=X & commonsub(X,Y)
+eff: loc(P)<-Y & loc_s2(P)<-nil;
+
+enterRoadfromS1(P:POSTMANS,X:LOCATIONS_SUB1,Y:LOCATIONS)
+pre:loc_s1(P)=X & commonsub2(X,Y)
+eff: loc(P)<-Y & loc_s1(P)<-nil;
+
+initial={loc(Postman1)<-Loc14,loc_s1(Postman1)<-nil,loc_s2(Postman1)<-nil,loc2(Let1)<-Loc10,loc2(Let2)<-Loc13,loc3(poBox1)<-Loc7};
+goals={loc2(Let1)<-poBox1,loc2(Let2)<-poBox1};
+
+
