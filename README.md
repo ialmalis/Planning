@@ -1,6 +1,3 @@
-# Planning
-Planning Projects
-
 # Postman
 fdr
 # Harbor
